@@ -1,0 +1,10 @@
+.filters{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3rem;
+}
+
+.filter{
+    font-size: 1.5rem;
+}
