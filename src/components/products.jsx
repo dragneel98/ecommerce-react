@@ -12,7 +12,8 @@ function Products({product}) {
                 <div className='product-header'>
                 <h2 className='product-title'> {product.title} </h2> </div>
                 <div className='img-container'>
-                  <img src={product.image} alt="product img" className='product-img'></img>
+                  {/* <img src={product.thumbnail} alt="product img" className='product-img'></img> */}
+                  <img src={product.image} alt={product.title} className="product-img"></img>
                 </div>
                 <p className='product-price'> ${product.price} </p>
                 <p> {product.category} </p>
