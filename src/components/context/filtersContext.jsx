@@ -1,12 +1,16 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 export const FiltersContext = createContext()
 
 export function FiltersProvider ({children}){
+  
+  const [filters, setFilters] = useState({
+    category: "all",
+    minPrice: 250
+  })
     return(
     <FiltersContext.Provider value={{
-        category: "all",
-        minPrice: "0"
+        filters, setFilters
      }
     }>
     {children}     
