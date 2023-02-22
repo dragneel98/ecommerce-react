@@ -9,10 +9,6 @@ function Filters({onChange}) {
     const priceFIlterID = useId()
     const categoryFIlterID = useId()
 
-    // const minPriceActualValue = (event) => {
-    //     setMinPrice(event.target.value)
-    // }
-
     const handleChangeMinPrice = (event) => {
         setMinPrice(event.target.value)
         onChange(prevState => ({
