@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { shoppingCartAdd } from '../assets/icons'
 import "/src/style/products.css"
 
 function Products({product}) {
@@ -17,7 +18,7 @@ function Products({product}) {
                 </div>
                 <p className='product-price'> ${product.price} </p>
                 <p> {product.category} </p>
-                <button>carrito</button>
+                <button> {shoppingCartAdd} </button>
               
             </li>
           ))}

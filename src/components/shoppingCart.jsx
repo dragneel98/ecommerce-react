@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useId } from 'react'
 
 function ShoppingCart() {
-
+  const shoppingCartID = useId()
   
   return (
-    <nav>
+    <>
+      <label  htmlFor={shoppingCartID}>
+        <ShoppingCart></ShoppingCart>
+      </label>
       
-    </nav>
+    </>
   )
 }
 

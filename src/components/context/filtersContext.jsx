@@ -6,7 +6,7 @@ export function FiltersProvider ({children}){
   
   const [filters, setFilters] = useState({
     category: "all",
-    minPrice: 250
+    minPrice: 0
   })
     return(
     <FiltersContext.Provider value={{
