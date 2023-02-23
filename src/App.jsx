@@ -4,6 +4,7 @@ import Header from './components/header'
 import Products from './components/products'
 import { Footer } from './components/Footer'
 import { useFilters } from './components/hooks/useFilters'
+import Scart from './components/Scart'
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
   return (
     <>
     <Header></Header>
+    <Scart></Scart>
     <Products product={filteredProducts}></Products>
     {/* <Footer filters={filteredProducts}></Footer> */}
     </>

@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { shoppingCartAdd } from '../assets/icons'
+import React from 'react'
 import "/src/style/products.css"
+import {ShoppingCartAdd} from '/src/assets/icons'
 
 function Products({product}) {
   
@@ -13,12 +13,11 @@ function Products({product}) {
                 <div className='product-header'>
                 <h2 className='product-title'> {product.title} </h2> </div>
                 <div className='img-container'>
-                  {/* <img src={product.thumbnail} alt="product img" className='product-img'></img> */}
                   <img src={product.image} alt={product.title} className="product-img"></img>
                 </div>
                 <p className='product-price'> ${product.price} </p>
                 <p> {product.category} </p>
-                <button> {shoppingCartAdd} </button>
+                <button> <ShoppingCartAdd></ShoppingCartAdd> </button>
               
             </li>
           ))}
