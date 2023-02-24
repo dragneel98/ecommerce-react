@@ -1,8 +1,11 @@
 import React from 'react'
 import "/src/style/products.css"
 import {ShoppingCartAdd} from '/src/assets/icons'
+import { useCart } from './hooks/useCart'
 
 function Products({product}) {
+
+  const {addToCart} = useCart()
   
   return (
     <div>
@@ -18,7 +21,7 @@ function Products({product}) {
                 <p> {product.category} </p>
                 <div className='product-price'> 
                   <p>  ${product.price} </p>
-                  <button className='cart-button-add'> <ShoppingCartAdd></ShoppingCartAdd> </button> 
+                  <button className='cart-button-add' onClick={()=> addToCart(product)}> <ShoppingCartAdd></ShoppingCartAdd> </button> 
                 </div>
                 
               

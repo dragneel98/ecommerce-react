@@ -5,7 +5,7 @@ import Products from './components/products'
 import { Footer } from './components/Footer'
 import { useFilters } from './components/hooks/useFilters'
 import Scart from './components/Scart'
-import { ShoppingCart } from './assets/icons'
+import { CartProvider } from './components/context/CartContext'
 
 
 function App() {
@@ -18,13 +18,13 @@ function App() {
   const filteredProducts = filterProducts(product)
 
   return (
-    <>
+    <CartProvider>
     <h1 className='app-title'> Tienda React </h1>
     <Header></Header>
     <Scart></Scart>
     <Products product={filteredProducts}></Products>
-    {/* <Footer filters={filteredProducts}></Footer> */}
-    </>
+    <Footer></Footer>
+    </CartProvider>
   )
 }
 
