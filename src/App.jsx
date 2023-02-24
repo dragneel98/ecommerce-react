@@ -5,6 +5,7 @@ import Products from './components/products'
 import { Footer } from './components/Footer'
 import { useFilters } from './components/hooks/useFilters'
 import Scart from './components/Scart'
+import { ShoppingCart } from './assets/icons'
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <>
+    <h1 className='app-title'> Tienda React </h1>
     <Header></Header>
     <Scart></Scart>
     <Products product={filteredProducts}></Products>

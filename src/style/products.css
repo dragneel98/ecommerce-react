@@ -49,4 +49,10 @@
 .product-price{
     color: green;
     font-size: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-button-add{
+    border-radius: 100%;
 }

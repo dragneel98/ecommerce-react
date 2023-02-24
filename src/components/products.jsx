@@ -15,9 +15,12 @@ function Products({product}) {
                 <div className='img-container'>
                   <img src={product.image} alt={product.title} className="product-img"></img>
                 </div>
-                <p className='product-price'> ${product.price} </p>
                 <p> {product.category} </p>
-                <button> <ShoppingCartAdd></ShoppingCartAdd> </button>
+                <div className='product-price'> 
+                  <p>  ${product.price} </p>
+                  <button className='cart-button-add'> <ShoppingCartAdd></ShoppingCartAdd> </button> 
+                </div>
+                
               
             </li>
           ))}
