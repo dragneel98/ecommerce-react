@@ -1,9 +1,11 @@
 import React, { useId } from 'react'
 import "/src/style/Cart.css"
 import {ShoppingCart, ShoppingCartRemove} from "/src/assets/icons"
+import { useCart } from './hooks/useCart'
 
 function Scart() {
   const shoppingCartID = useId()
+  const {clearCart} = useCart()
   
   return (
     <> 
@@ -21,7 +23,7 @@ function Scart() {
             </footer>
           </li>
         </ul>
-        <button> <ShoppingCartRemove></ShoppingCartRemove> </button>
+        <button onClick={clearCart}> <ShoppingCartRemove></ShoppingCartRemove> </button>
       </aside>
     </>
   )

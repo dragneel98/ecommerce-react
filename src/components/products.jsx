@@ -2,16 +2,24 @@ import React from 'react'
 import "/src/style/products.css"
 import {ShoppingCartAdd} from '/src/assets/icons'
 import { useCart } from './hooks/useCart'
+import { ShoppingCartRemove } from '../assets/icons'
 
 function Products({product}) {
 
-  const {addToCart} = useCart()
+  const {addToCart, cart} = useCart()
+
+  function checkProductCart(product) {
+    return cart.some(item => item.id === product.id)
+  }
   
   return (
     <div>
       <div className='product-list-container'> 
         <ul className="product-list">
-          {product.map(product => (
+          {product.map(product => {
+            
+            const isProductInCart = checkProductCart(product)
+          return(
             <li key={product.id} className="card"> 
                 <div className='product-header'>
                 <h2 className='product-title'> {product.title} </h2> </div>
@@ -21,12 +29,14 @@ function Products({product}) {
                 <p> {product.category} </p>
                 <div className='product-price'> 
                   <p>  ${product.price} </p>
-                  <button className='cart-button-add' onClick={()=> addToCart(product)}> <ShoppingCartAdd></ShoppingCartAdd> </button> 
+                  <button className='cart-button-add' onClick={()=> addToCart(product)}>
+                   {isProductInCart ? <ShoppingCartRemove/> : <ShoppingCartAdd/> } 
+                  </button> 
                 </div>
                 
               
             </li>
-          ))}
+          )})}
         </ul>
       </div>
     </div>
