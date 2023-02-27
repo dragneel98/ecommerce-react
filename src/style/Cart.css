@@ -8,6 +8,11 @@
   width: 200px;
 }
 
+.cart-title{
+  padding: 1rem;
+  width: 100%;
+}
+
 .cart img {
   aspect-ratio: 16/9;
   width: 100%;

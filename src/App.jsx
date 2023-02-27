@@ -23,7 +23,7 @@ function App() {
     <Header></Header>
     <Scart></Scart>
     <Products product={filteredProducts}></Products>
-    <Footer></Footer>
+    {/* <Footer></Footer> */}
     </CartProvider>
   )
 }

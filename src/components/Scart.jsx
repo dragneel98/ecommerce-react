@@ -5,10 +5,18 @@ import { useCart } from './hooks/useCart'
 
 function CartItem({image, price, title, quantity, addToCart}) {
 
+  function titleTrim(title){
+    const titleArray =  title.split(" ")
+    const titleTrim = titleArray.slice(0,3)
+    const result = titleTrim.join(" ")
+    return result
+  }
+
   return(
         <li> 
-        <p>hola</p>
-              <h2> {title} </h2> 
+              <h2 className='cart-title'>
+               {titleTrim(title)} 
+              </h2> 
               <div>
                 <img src={image} alt={title}></img>
               </div>

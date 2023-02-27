@@ -22,7 +22,7 @@ function Products({product: products}) {
           return(
             <li key={product.id} className="card"> 
                 <div className='product-header'>
-                <h2 className='product-title'> {product.title} </h2> </div>
+                <h2 className='product-title' > {product.title} </h2> </div>
                 <div className='img-container'>
                   <img src={product.image} alt={product.title} className="product-img"></img>
                 </div>
