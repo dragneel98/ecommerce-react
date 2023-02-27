@@ -4,9 +4,9 @@ import {ShoppingCartAdd} from '/src/assets/icons'
 import { useCart } from './hooks/useCart'
 import { ShoppingCartRemove } from '../assets/icons'
 
-function Products({product}) {
+function Products({product: products}) {
 
-  const {addToCart, cart} = useCart()
+  const {addToCart, cart, removeFromCart} = useCart()
 
   function checkProductCart(product) {
     return cart.some(item => item.id === product.id)
@@ -16,7 +16,7 @@ function Products({product}) {
     <div>
       <div className='product-list-container'> 
         <ul className="product-list">
-          {product.map(product => {
+          {products.map(product => {
             
             const isProductInCart = checkProductCart(product)
           return(
@@ -29,12 +29,11 @@ function Products({product}) {
                 <p> {product.category} </p>
                 <div className='product-price'> 
                   <p>  ${product.price} </p>
-                  <button className='cart-button-add' onClick={()=> addToCart(product)}>
+                  <button className='cart-button-add' style={{backgroundColor: isProductInCart ? "red" : "#09f"}} 
+                   onClick={()=> {isProductInCart ? removeFromCart(product) : addToCart(product)}}>
                    {isProductInCart ? <ShoppingCartRemove/> : <ShoppingCartAdd/> } 
                   </button> 
                 </div>
-                
-              
             </li>
           )})}
         </ul>
