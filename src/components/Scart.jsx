@@ -42,7 +42,7 @@ function Scart() {
       <input id={shoppingCartID} type="checkbox" hidden></input>
       <aside className='cart'>
         <ul>
-          {cart.map(product => {
+          {/* {cart.map(product => {
             return(
             <CartItem
               key={product.id}
@@ -50,9 +50,15 @@ function Scart() {
               {...product}
             />
             )
-            
           })}
-      
+       */}
+       {cart.map(product => (
+            <CartItem
+              key={product.id}
+              addToCart={() => addToCart(product)}
+              {...product}
+            />
+          ))}
         </ul>
         <button onClick={clearCart}> <ShoppingCartRemove></ShoppingCartRemove> </button>
       </aside>
