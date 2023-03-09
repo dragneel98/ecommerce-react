@@ -6,7 +6,8 @@ export const updateLocalStorage = state => {
 }
 
 export const cartReducer = (state, action) => {
-
+    let productPrice = 0
+    
     const { type : actionType, payload : actionPayload } = action
 
     switch (actionType) {
@@ -15,14 +16,19 @@ export const cartReducer = (state, action) => {
            // verifica si el producto ya esta en el carrito
            // item siendo los objetos actuales que se tienen en el carrito y product el nuevo producto a introducir
            const productCartIdex = state.findIndex(item => item.id === id)
-
            
+           console.log("se actualizo");
            if (productCartIdex >= 0) {
                 // //alternativa usando structuredClone
                 // // clone hace una copia profunda del estado cart
+                
                 const newState = structuredClone(state)
                 newState[productCartIdex].quantity += 1
-
+                if(newState[productCartIdex].quantity<=2) {
+                    productPrice = {...newState[productCartIdex]} }
+                newState[productCartIdex].price += productPrice.price
+                console.log(productPrice.price);
+                console.log(newState);
                 // usando el spread operator y slice
                 // const newState = [
                 //     ...state.slice(0, productCartIdex),

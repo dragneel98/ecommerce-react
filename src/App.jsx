@@ -1,5 +1,4 @@
 import './App.css'
-import {products as initialProducts} from './components/mocks/products.json'
 import Header from './components/header'
 import Products from './components/products'
 import { Footer } from './components/Footer'

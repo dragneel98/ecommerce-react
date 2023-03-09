@@ -1,4 +1,4 @@
-import React, { useId } from 'react'
+import React, { useId, useState } from 'react'
 import "/src/style/Cart.css"
 import {ShoppingCart, ShoppingCartRemove} from "/src/assets/icons"
 import { useCart } from './hooks/useCart'
@@ -30,10 +30,10 @@ function CartItem({image, price, title, quantity, addToCart}) {
   )
 }
 
-function Scart() {
+function Scart() { 
   const shoppingCartID = useId()
   const {cart, clearCart, addToCart} = useCart()
-  
+  const [totalCost, setTotalCost] = useState(0)
   return (
     <> 
       <label className='cart-button' htmlFor={shoppingCartID}>
@@ -42,17 +42,8 @@ function Scart() {
       <input id={shoppingCartID} type="checkbox" hidden></input>
       <aside className='cart'>
         <ul>
-          {/* {cart.map(product => {
-            return(
-            <CartItem
-              key={product.id}
-              addToCart={() => addToCart(product)}
-              {...product}
-            />
-            )
-          })}
-       */}
-       {cart.map(product => (
+         
+          {cart.map(product => (
             <CartItem
               key={product.id}
               addToCart={() => addToCart(product)}
@@ -60,7 +51,10 @@ function Scart() {
             />
           ))}
         </ul>
+        <footer>
+        <p> {`total: ${totalCost}`} </p>
         <button onClick={clearCart}> <ShoppingCartRemove></ShoppingCartRemove> </button>
+        </footer>
       </aside>
     </>
   )
