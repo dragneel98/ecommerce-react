@@ -20,7 +20,7 @@ function CartItem({image, price, title, quantity, addToCart}) {
               <div>
                 <img src={image} alt={title}></img>
               </div>
-              <strong> {price} </strong>
+              <strong> {price * quantity} </strong>
               <footer>
                 <small>quantity: {quantity} </small>
                 <button onClick={addToCart}>+</button>
@@ -33,7 +33,8 @@ function CartItem({image, price, title, quantity, addToCart}) {
 function Scart() { 
   const shoppingCartID = useId()
   const {cart, clearCart, addToCart} = useCart()
-  const [totalCost, setTotalCost] = useState(0)
+  // const [totalCost, setTotalCost] = useState(0)
+  let totalCost = 0
   return (
     <> 
       <label className='cart-button' htmlFor={shoppingCartID}>
@@ -48,11 +49,12 @@ function Scart() {
               key={product.id}
               addToCart={() => addToCart(product)}
               {...product}
+              {...totalCost += (product.price*product.quantity)}
             />
           ))}
         </ul>
         <footer>
-        <p> {`total: ${totalCost}`} </p>
+        <p> {`total: ${totalCost.toFixed(2)}`} </p>
         <button onClick={clearCart}> <ShoppingCartRemove></ShoppingCartRemove> </button>
         </footer>
       </aside>

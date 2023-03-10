@@ -6,7 +6,6 @@ export const updateLocalStorage = state => {
 }
 
 export const cartReducer = (state, action) => {
-    let productPrice = 0
     
     const { type : actionType, payload : actionPayload } = action
 
@@ -24,11 +23,7 @@ export const cartReducer = (state, action) => {
                 
                 const newState = structuredClone(state)
                 newState[productCartIdex].quantity += 1
-                if(newState[productCartIdex].quantity<=2) {
-                    productPrice = {...newState[productCartIdex]} }
-                newState[productCartIdex].price += productPrice.price
-                console.log(productPrice.price);
-                console.log(newState);
+                
                 // usando el spread operator y slice
                 // const newState = [
                 //     ...state.slice(0, productCartIdex),
