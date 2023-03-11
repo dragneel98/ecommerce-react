@@ -3,6 +3,8 @@ import "/src/style/products.css"
 import {ShoppingCartAdd} from '/src/assets/icons'
 import { useCart } from './hooks/useCart'
 import { ShoppingCartRemove } from '../assets/icons'
+import Filters from './filters'
+
 
 function Products({product: products}) {
 

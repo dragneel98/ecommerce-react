@@ -1,15 +1,18 @@
 *{
   box-sizing: border-box;
 }
-#root{
-  width: 100%;
-  padding: 0;
-  background-color: gray;
-}
 body{
   padding: 0;
-  background-color: black;
+  background-color: gray;
+  
 }
+#root{
+  height: 100%;
+  width: 100%;
+  padding: 0;
+ 
+}
+
 ul{
   margin: 1rem;
   padding: 0;
