@@ -7,11 +7,16 @@ export default function useForms(initialForm, validateForm) {
  const [response, setRespone] = useState(null)
 
  const handleChange = (e)=> {
-
+    const {name, value} = e.target
+    setForm({
+        ...form,
+        [name]: value
+    })
  }
 
  const handleBlur = (e)=> {
-
+    handleChange(e)
+    setError(validateForm(form))
  }
 
  const handleSubmit = (e)=> {
