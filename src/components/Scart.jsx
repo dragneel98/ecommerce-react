@@ -2,6 +2,7 @@ import React, { useId, useState } from 'react'
 import "/src/style/Cart.css"
 import {ShoppingCart, ShoppingCartRemove} from "/src/assets/icons"
 import { useCart } from './hooks/useCart'
+import useLogin from './hooks/useLogin'
 
 function CartItem({image, price, title, quantity, addToCart}) {
 
@@ -31,10 +32,12 @@ function CartItem({image, price, title, quantity, addToCart}) {
 }
 
 function Scart() { 
+  const {auth} = useLogin()
   const shoppingCartID = useId()
   const {cart, clearCart, addToCart} = useCart()
-  // const [totalCost, setTotalCost] = useState(0)
   let totalCost = 0
+
+  console.log(auth);
   return (
     <> 
       <label className='cart-button' htmlFor={shoppingCartID}>
@@ -42,17 +45,21 @@ function Scart() {
       </label>
       <input id={shoppingCartID} type="checkbox" hidden></input>
       <aside className='cart'>
+      
         <ul>
          
           {cart.map(product => (
+            
             <CartItem
               key={product.id}
-              addToCart={() => addToCart(product)}
+              addToCart= {()=> addToCart(product) }
               {...product}
               {...totalCost += (product.price*product.quantity)}
             />
+            
           ))}
         </ul>
+      
         <footer>
         <p> {`total: ${totalCost.toFixed(2)}`} </p>
         <button onClick={clearCart}> <ShoppingCartRemove></ShoppingCartRemove> </button>

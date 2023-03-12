@@ -1,11 +1,8 @@
 import React, { useState } from 'react'
+import useLogin from './hooks/useLogin'
 
 function Header() {
-  const [auth, setAuth] = useState(false)
-
-  const handleAuth = () => {
-    {auth ? setAuth(false) : setAuth(true)}
-  }
+  const {auth, handleAuth} = useLogin()
   return (
     <div className='header'>
        { auth 

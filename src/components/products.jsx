@@ -3,12 +3,12 @@ import "/src/style/products.css"
 import {ShoppingCartAdd} from '/src/assets/icons'
 import { useCart } from './hooks/useCart'
 import { ShoppingCartRemove } from '../assets/icons'
-import Filters from './filters'
-
+import useLogin from './hooks/useLogin'
 
 function Products({product: products}) {
 
   const {addToCart, cart, removeFromCart} = useCart()
+  const{auth} = useLogin()
 
   function checkProductCart(product) {
     return cart.some(item => item.id === product.id)
@@ -31,10 +31,16 @@ function Products({product: products}) {
                 <p> {product.category} </p>
                 <div className='product-price'> 
                   <p>  ${product.price} </p>
+                  { auth ?
                   <button className='cart-button-add' style={{backgroundColor: isProductInCart ? "red" : "#09f"}} 
-                   onClick={()=> {isProductInCart ? removeFromCart(product) : addToCart(product)}}>
+                   onClick= {()=> {isProductInCart ? removeFromCart(product) : addToCart(product)}} >
+
                    {isProductInCart ? <ShoppingCartRemove/> : <ShoppingCartAdd/> } 
                   </button> 
+                  : <button className='cart-button-add'  style={{backgroundColor: "#09f"}} onClick={()=> console.log("click")} >
+                      <ShoppingCartAdd/> 
+                    </button>}
+                   
                 </div>
             </li>
           )})}
