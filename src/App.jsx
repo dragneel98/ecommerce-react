@@ -7,6 +7,7 @@ import Scart from './components/Scart'
 import { CartProvider } from './components/context/CartContext'
 import Filters from './components/filters'
 import LoginProvider from './components/context/loginContext'
+import LoginForm from './components/loginForm'
 
 
 function App() {
@@ -21,12 +22,12 @@ function App() {
   return (
     <LoginProvider>
     <CartProvider>
-    <h1 className='app-title'> Tienda React </h1>
     <Header></Header>
     <Filters></Filters>
     <Scart></Scart>
+    <LoginForm></LoginForm>
     <Products product={filteredProducts}></Products>
-    {/* <Footer></Footer> */}
+    
     </CartProvider>
     </LoginProvider>
   )

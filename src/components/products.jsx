@@ -37,7 +37,7 @@ function Products({product: products}) {
 
                    {isProductInCart ? <ShoppingCartRemove/> : <ShoppingCartAdd/> } 
                   </button> 
-                  : <button className='cart-button-add'  style={{backgroundColor: "#09f"}} onClick={()=> console.log("click")} >
+                  : <button className='cart-button-add'  style={{backgroundColor: "#09f"}} onClick={()=> console.log("inicia sesion")} >
                       <ShoppingCartAdd/> 
                     </button>}
                    
