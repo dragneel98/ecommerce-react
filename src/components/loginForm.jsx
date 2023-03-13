@@ -9,9 +9,21 @@ const initialForm = {
 
 const validationsForm = (form) => {
   let errors = {}
+  const regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/
+  const regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/
+
   if(!form.name.trim()){
    errors.name = "este campo no puede estar vacio"
+  }else if (!regexName.test(form.name.trim())){
+    errors.name = "este campo solo acepta letras y espacios"
   }
+
+  if(!form.password){
+    errors.password = "este campo no puede estar vacio"
+  }else if(form.password.length < 8){
+    errors.password = " el numero minimo de caracteres es 8"
+  }
+
   return errors
 }
 
@@ -27,7 +39,7 @@ export default function LoginForm() {
               {error && <p className='errors'> {error.name} </p>}
             <input className='login-input' placeholder='contraseña' name='password' type='password'
               onBlur={handleBlur} onChange={handleChange} value={form.password} required></input>
-              {error && <p className='errors'> {error.name} </p>}
+              {error && <p className='errors'> {error.password} </p>}
             <button>Login</button>
         </form>
     </>
