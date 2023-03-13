@@ -8,7 +8,11 @@ const initialForm = {
 }
 
 const validationsForm = (form) => {
-  if()
+  let errors = {}
+  if(!form.name.trim()){
+   errors.name = "este campo no puede estar vacio"
+  }
+  return errors
 }
 
 export default function LoginForm() {
@@ -20,8 +24,10 @@ export default function LoginForm() {
         <form className='login-form' onSubmit={handleSubmit}>
             <input className='login-input' placeholder='usuario' name='name' type='text'
               onBlur={handleBlur} onChange={handleChange} value={form.name} required></input>
+              {error && <p className='errors'> {error.name} </p>}
             <input className='login-input' placeholder='contraseña' name='password' type='password'
               onBlur={handleBlur} onChange={handleChange} value={form.password} required></input>
+              {error && <p className='errors'> {error.name} </p>}
             <button>Login</button>
         </form>
     </>
