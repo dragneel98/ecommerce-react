@@ -8,6 +8,7 @@ import { CartProvider } from './components/context/CartContext'
 import Filters from './components/filters'
 import LoginProvider from './components/context/loginContext'
 import LoginForm from './components/loginForm'
+import Modals from './components/modals'
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
     <Header></Header>
     <Filters></Filters>
     <Scart></Scart>
+    <Modals></Modals>
     <LoginForm></LoginForm>
     <Products product={filteredProducts}></Products>
     
