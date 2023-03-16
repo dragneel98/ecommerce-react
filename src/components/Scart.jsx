@@ -37,7 +37,6 @@ function Scart() {
   const {cart, clearCart, addToCart} = useCart()
   let totalCost = 0
 
-  console.log(auth);
   return (
     <> 
       <label className='cart-button' htmlFor={shoppingCartID}>

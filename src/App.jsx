@@ -23,11 +23,10 @@ function App() {
   return (
     <LoginProvider>
     <CartProvider>
+
     <Header></Header>
     <Filters></Filters>
     <Scart></Scart>
-    <Modals></Modals>
-    <LoginForm></LoginForm>
     <Products product={filteredProducts}></Products>
     
     </CartProvider>

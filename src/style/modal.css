@@ -1,0 +1,30 @@
+.modal{
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.open{
+    display: flex;
+}
+
+.modal-container{
+ position: relative;
+ background-color: aliceblue;
+ min-width: 25rem;
+ overflow-y: auto;
+}
+
+.modal-close-button{
+ position: absolute;
+ top: 1rem;
+ right: 1rem;
+ background: transparent;
+}

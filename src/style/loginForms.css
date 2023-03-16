@@ -1,3 +1,33 @@
+.login-modal{
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-modal.open{
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-close-button{
+ position: absolute;
+ top: 1rem;
+ right: 1rem;
+}
+
+.login-container{
+    position: relative;
+    background-color: aliceblue;
+    border-radius: 1rem;
+    min-width: 20rem;
+}
 .login-form-title{
     display: flex;
     justify-content: center;
@@ -8,10 +38,15 @@
     flex-direction: column;
     gap: 0.5rem;
     padding: 1rem;
+    
 }
 
 .login-input{
     height: 2rem;
+}
+
+.log-button{
+    background-color: cornflowerblue;
 }
 
 .errors{

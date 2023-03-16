@@ -7,7 +7,7 @@ export default function LoginProvider({children}) {
     
     const handleAuth = () => {
         {auth ? setAuth(false) : setAuth(true)}
-        
+       
     }
   return (
     <LoginContext.Provider value={
