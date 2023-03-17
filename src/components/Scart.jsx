@@ -3,6 +3,8 @@ import "/src/style/Cart.css"
 import {ShoppingCart, ShoppingCartRemove} from "/src/assets/icons"
 import { useCart } from './hooks/useCart'
 import useLogin from './hooks/useLogin'
+import useModals from './hooks/useModals'
+import LoginForm from './loginForm'
 
 function CartItem({image, price, title, quantity, addToCart}) {
 
@@ -35,30 +37,31 @@ function Scart() {
   const {auth} = useLogin()
   const shoppingCartID = useId()
   const {cart, clearCart, addToCart} = useCart()
-  let totalCost = 0
+  let totalCost = 0 
+  const [logInModalOpen, loginHandleIsOpen] = useModals(false)
 
   return (
     <> 
       <label className='cart-button' htmlFor={shoppingCartID}>
         <ShoppingCart></ShoppingCart>
       </label>
-      <input id={shoppingCartID} type="checkbox" hidden></input>
+      {auth? <button>logeado</button> : <button onClick={loginHandleIsOpen}>nologeado</button>}
+      {/* {auth 
+      ? <input id={shoppingCartID} type="checkbox" hidden></input>
+      : <input id={shoppingCartID} type="checkbox" hidden onc={logInModalOpen}></input>} */}
+      {/* onClick={!auth && loginHandleIsOpen} */}
+      {/* <LoginForm isOpen={logInModalOpen} closeModal={loginHandleIsOpen}></LoginForm> */}
       <aside className='cart'>
-      
         <ul>
-         
-          {cart.map(product => (
-            
+          {cart.map(product => ( 
             <CartItem
               key={product.id}
               addToCart= {()=> addToCart(product) }
               {...product}
               {...totalCost += (product.price*product.quantity)}
-            />
-            
+            />  
           ))}
         </ul>
-      
         <footer>
         <p> {`total: ${totalCost.toFixed(2)}`} </p>
         <button onClick={clearCart}> <ShoppingCartRemove></ShoppingCartRemove> </button>
