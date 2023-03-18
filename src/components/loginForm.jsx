@@ -19,7 +19,6 @@ const validationsForm = (form) => {
   } else if (!regexName.test(form.name.trim())) {
     errors.name = "este campo solo acepta letras y espacios";
   }
-
   if (!form.password) {
     errors.password = "este campo no puede estar vacio";
   } else if (form.password.length < 8) {
@@ -29,7 +28,7 @@ const validationsForm = (form) => {
   return errors;
 };
 
-export default function LoginForm({ isOpen, closeModal }) {
+export default function LoginForm({ isOpen, closeModal, children }) {
   const {
     form,
     error,
@@ -46,11 +45,14 @@ export default function LoginForm({ isOpen, closeModal }) {
     }
   }, [auth])
 
+  const handleClickModal = (e) => e.stopPropagation()
+
   return (
-    <article className={`login-modal ${isOpen && "open"}`}>
+    <article className={`login-modal ${isOpen && "open"}`} onClick={closeModal}>
       
-      <div className="login-container">
+      <div className="login-container" onClick={handleClickModal}>
         <button className="modal-close-button" onClick={closeModal}>X</button>
+        {children}
         <h1 className="login-form-title">Sign in</h1>
         <form className="login-form" onSubmit={handleSubmit}>
           <input

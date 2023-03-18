@@ -4,12 +4,14 @@ import {ShoppingCartAdd} from '/src/assets/icons'
 import { useCart } from './hooks/useCart'
 import { ShoppingCartRemove } from '../assets/icons'
 import useLogin from './hooks/useLogin'
+import useModals from './hooks/useModals'
+import LoginForm from './loginForm'
 
 function Products({product: products}) {
 
   const {addToCart, cart, removeFromCart} = useCart()
   const{auth} = useLogin()
-
+  const [logInModalOpen, loginOpenModal, loginCloseModal] = useModals(false)
   function checkProductCart(product) {
     return cart.some(item => item.id === product.id)
   }
@@ -18,6 +20,7 @@ function Products({product: products}) {
     <div>
       <div className='product-list-container'> 
         <ul className="product-list">
+        <LoginForm isOpen={logInModalOpen} closeModal={loginCloseModal}></LoginForm>
           {products.map(product => {
             
             const isProductInCart = checkProductCart(product)
@@ -31,16 +34,16 @@ function Products({product: products}) {
                 <p> {product.category} </p>
                 <div className='product-price'> 
                   <p>  ${product.price} </p>
+                  
                   { auth ?
                   <button className='cart-button-add' style={{backgroundColor: isProductInCart ? "red" : "#09f"}} 
                    onClick= {()=> {isProductInCart ? removeFromCart(product) : addToCart(product)}} >
-
                    {isProductInCart ? <ShoppingCartRemove/> : <ShoppingCartAdd/> } 
                   </button> 
-                  : <button className='cart-button-add'  style={{backgroundColor: "#09f"}} onClick={()=> console.log("inicia sesion")} >
+
+                  : <button className='cart-button-add'  style={{backgroundColor: "#09f"}} onClick={loginOpenModal} >
                       <ShoppingCartAdd/> 
                     </button>}
-                   
                 </div>
             </li>
           )})}

@@ -36,21 +36,19 @@ function CartItem({image, price, title, quantity, addToCart}) {
 function Scart() { 
   const {auth} = useLogin()
   const shoppingCartID = useId()
-  const {cart, clearCart, addToCart} = useCart()
-  let totalCost = 0 
-  const [logInModalOpen, loginHandleIsOpen] = useModals(false)
+  const {cart, clearCart, addToCart} = useCart() 
+  const [logInModalOpen, loginOpenModal, loginCloseModal] = useModals(false)
+  let totalCost = 0
 
   return (
     <> 
       <label className='cart-button' htmlFor={shoppingCartID}>
         <ShoppingCart></ShoppingCart>
       </label>
-      {auth? <button>logeado</button> : <button onClick={loginHandleIsOpen}>nologeado</button>}
-      {/* {auth 
+      {auth 
       ? <input id={shoppingCartID} type="checkbox" hidden></input>
-      : <input id={shoppingCartID} type="checkbox" hidden onc={logInModalOpen}></input>} */}
-      {/* onClick={!auth && loginHandleIsOpen} */}
-      {/* <LoginForm isOpen={logInModalOpen} closeModal={loginHandleIsOpen}></LoginForm> */}
+      : <button id={shoppingCartID} hidden onClick={loginOpenModal}></button>}
+      <LoginForm isOpen={logInModalOpen} closeModal={loginCloseModal}></LoginForm>
       <aside className='cart'>
         <ul>
           {cart.map(product => ( 

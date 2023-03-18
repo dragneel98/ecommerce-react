@@ -6,14 +6,14 @@ import "/src/style/header.css"
 
 function Header() {
   const {auth, handleAuth} = useLogin()
-  const [logInModalOpen, loginHandleIsOpen] = useModals(false)
+  const [logInModalOpen, loginOpenModal, loginCloseModal] = useModals(false)
   return (
     <header className='header'>
       <h1 className='app-title'> Tienda </h1>
        { auth 
        ? <button onClick={handleAuth}>logout</button>
-       : <button onClick={loginHandleIsOpen}>login</button>} 
-       <LoginForm isOpen={logInModalOpen} closeModal={loginHandleIsOpen}></LoginForm>
+       : <button onClick={loginOpenModal}>login</button>} 
+       <LoginForm isOpen={logInModalOpen} closeModal={loginCloseModal}></LoginForm>
     </header>
   )
 }
