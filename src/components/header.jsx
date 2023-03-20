@@ -11,8 +11,8 @@ function Header() {
     <header className='header'>
       <h1 className='app-title'> Tienda </h1>
        { auth 
-       ? <button onClick={handleAuth}>logout</button>
-       : <button onClick={loginOpenModal}>login</button>} 
+       ? <button className='login-button' onClick={handleAuth}>logout</button>
+       : <button className='login-button' onClick={loginOpenModal}>login</button>} 
        <LoginForm isOpen={logInModalOpen} closeModal={loginCloseModal}></LoginForm>
     </header>
   )

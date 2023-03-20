@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "/src/style/products.css"
 import {ShoppingCartAdd} from '/src/assets/icons'
 import { useCart } from './hooks/useCart'
@@ -12,9 +12,11 @@ function Products({product: products}) {
   const {addToCart, cart, removeFromCart} = useCart()
   const{auth} = useLogin()
   const [logInModalOpen, loginOpenModal, loginCloseModal] = useModals(false)
+  
   function checkProductCart(product) {
     return cart.some(item => item.id === product.id)
   }
+  
   
   return (
     <div>
@@ -35,11 +37,13 @@ function Products({product: products}) {
                 <div className='product-price'> 
                   <p>  ${product.price} </p>
                   
-                  { auth ?
-                  <button className='cart-button-add' style={{backgroundColor: isProductInCart ? "red" : "#09f"}} 
-                   onClick= {()=> {isProductInCart ? removeFromCart(product) : addToCart(product)}} >
-                   {isProductInCart ? <ShoppingCartRemove/> : <ShoppingCartAdd/> } 
-                  </button> 
+                  { auth 
+                  ? <button 
+                    className="cart-button-add"
+                    style={{backgroundColor: isProductInCart ? "red" : "#09f"}} 
+                    onClick= {()=> {isProductInCart ? removeFromCart(product) : addToCart(product)} } >
+                    {isProductInCart ? <ShoppingCartRemove/> : <ShoppingCartAdd/> } 
+                    </button> 
 
                   : <button className='cart-button-add'  style={{backgroundColor: "#09f"}} onClick={loginOpenModal} >
                       <ShoppingCartAdd/> 
